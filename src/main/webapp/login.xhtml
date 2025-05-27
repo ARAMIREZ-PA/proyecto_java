@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head>
+    <title>Iniciar Sesión</title>
+
+    <!-- Bootstrap y Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            background-image: url('https://cdn.pixabay.com/photo/2017/08/06/00/15/stethoscope-2583737_1280.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.85);
+            min-height: 100vh;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-link {
+            color: #004d66 !important;
+        }
+
+        .nav-link:hover {
+            color: #007b8a !important;
+        }
+
+        h2 {
+            color: #004d66;
+        }
+
+        .recover-password {
+            color: #006d77;
+        }
+
+        .recover-password:hover {
+            text-decoration: underline;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <div class="overlay">
+        <!-- Encabezado -->
+        <img class="mar d-block mx-auto mb-3" src="resources/imagenes/Logo.png" width="200px" alt="Logo" />
+        
+        <header class="bg-white py-3 shadow-sm mb-4">
+            <div class="container">
+                <div class="row align-items-center">
+
+                    <div class="col-md-6 text-center">
+                        <nav>
+                            <ul class="nav justify-content-center">
+                                <li class="nav-item">
+                                    <a class="nav-link fw-bold" href="Inicio.html">Inicio</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link fw-bold" href="Preguntas_Frecuentes.html">Preguntas Frecuentes</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link fw-bold" href="canales_contacto.html">Canales de Contacto</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link fw-bold" href="quienes_somos.html">¿Quiénes Somos?</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="col-md-3 d-flex justify-content-center justify-content-md-end gap-3">
+                        <a class="text-primary fs-5" href="https://www.facebook.com/?locale=es_LA" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a class="text-success fs-5" href="https://www.whatsapp.com/?lang=es_LA" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a class="text-dark fs-5" href="https://www.tiktok.com/@camilo?lang=es" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a class="text-danger fs-5" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Formulario centrado -->
+        <main class="d-flex flex-column align-items-center justify-content-center">
+            <div class="card shadow p-4" style="max-width: 400px; width: 100%;">
+                <div class="card-body">
+
+                    <img src="resources/imagenes/Logo.png" alt="Logo" class="d-block mx-auto mb-3" style="max-width: 120px;" />
+
+                    <h:form>
+                        <fieldset class="text-center mb-4">
+                            <legend><h2>Inicia Sesión en CronicLife</h2></legend>
+                        </fieldset>
+
+                        <!-- Usuario -->
+                        <div class="mb-3">
+                            <h:outputLabel for="iTextUsuario" value="Usuario" styleClass="form-label" />
+                            <h:inputText id="iTextUsuario" value="#{login.usuario}" required="true"
+                                         requiredMessage="El campo usuario es obligatorio"
+                                         styleClass="form-control" />
+                            <h:message for="iTextUsuario" styleClass="text-danger small" />
+                        </div>
+
+                        <!-- Contraseña -->
+                        <div class="mb-3">
+                            <h:outputLabel for="iTextPassword" value="Contraseña" styleClass="form-label" />
+                            <h:inputSecret id="iTextPassword" value="#{login.contrasenna}" required="true"
+                                           requiredMessage="El campo contraseña es obligatorio"
+                                           styleClass="form-control" />
+                            <h:message for="iTextPassword" styleClass="text-danger small" />
+                        </div>
+
+                        <!-- Botón -->
+                        <div class="d-grid mb-3">
+                            <h:commandButton value="Iniciar Sesión"
+                                             action="#{login.iniciarSesion()}"
+                                             styleClass="btn btn-primary" />
+                        </div>
+
+                        <!-- Enlaces -->
+                        <div class="text-center">
+                            <a href="Recuperar_Contraseña.html" class="recover-password d-block mb-2">Recuperar Contraseña</a>
+                            <a href="Registro.html" class="recover-password d-block">Registrarse</a>
+                        </div>
+                    </h:form>
+                </div>
+            </div>
+
+            <!-- Redes sociales -->
+            <div class="mt-4">
+                <a href="https://www.facebook.com/?locale=es_LA" class="text-primary fs-4 me-3"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.whatsapp.com/?lang=es_LA" class="text-success fs-4 me-3"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.tiktok.com/@camilo?lang=es" class="text-dark fs-4 me-3"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/" class="text-danger fs-4"><i class="fab fa-instagram"></i></a>
+            </div>
+        </main>
+    </div>
+</h:body>
+</html>
