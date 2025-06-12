@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
     <title>Iniciar Sesión</title>
@@ -149,5 +150,110 @@
             </div>
         </main>
     </div>
+    
+    <f:view>
+
+
+        <h:form>
+            <h1><h:outputText value="List"/></h1>
+            <h:dataTable value="#{solicitudesController.obtenerSolicitudes()}" var="item">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="IdSolicitud"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idSolicitud}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="TipoDocumento"/>
+                    </f:facet>
+                    <h:outputText value="#{item.tipoDocumento}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="NumeroDocumento"/>
+                    </f:facet>
+                    <h:outputText value="#{item.numeroDocumento}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="NombreCompleto"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nombreCompleto}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="DireccionResidencia"/>
+                    </f:facet>
+                    <h:outputText value="#{item.direccionResidencia}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Indicaciones"/>
+                    </f:facet>
+                    <h:outputText value="#{item.indicaciones}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Ciudad"/>
+                    </f:facet>
+                    <h:outputText value="#{item.ciudad}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Departamento"/>
+                    </f:facet>
+                    <h:outputText value="#{item.departamento}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="CorreoElectronico"/>
+                    </f:facet>
+                    <h:outputText value="#{item.correoElectronico}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="ConfirmacionCorreo"/>
+                    </f:facet>
+                    <h:outputText value="#{item.confirmacionCorreo}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Celular"/>
+                    </f:facet>
+                    <h:outputText value="#{item.celular}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="ConfirmacionCelular"/>
+                    </f:facet>
+                    <h:outputText value="#{item.confirmacionCelular}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="CargarOrdenMedica"/>
+                    </f:facet>
+                    <h:outputText value="#{item.cargarOrdenMedica}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="OrdenMedica"/>
+                    </f:facet>
+                    <h:outputText value="#{item.ordenMedica}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="ConfirmaTerminos"/>
+                    </f:facet>
+                    <h:outputText value="#{item.confirmaTerminos}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </f:view>
+
+    
+    
+    
+    
 </h:body>
 </html>

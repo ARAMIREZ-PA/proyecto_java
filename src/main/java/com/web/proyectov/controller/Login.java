@@ -4,9 +4,13 @@
  */
 package com.web.proyectov.controller;
 
+import com.web.proyectof.entidades.Usuario;
+import com.web.proyectof.services.UsuarioFacade;
+import com.web.proyectof.services.UsuarioFacadeLocal;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
@@ -18,8 +22,11 @@ import javax.servlet.http.HttpSession;
 @Named(value = "login")
 @SessionScoped
 public class Login implements Serializable {
+private Usuario usuarioValidado;     
 private String usuario;
 private String contrasenna;
+@EJB
+private UsuarioFacadeLocal ufl;
 
     public String getUsuario() {
         return usuario;
@@ -38,7 +45,9 @@ private String contrasenna;
     }
 
     public String iniciarSesion(){
-        if(usuario.equals("admin")&& contrasenna.equals("clave123")){
+        
+        usuarioValidado = this.ufl.iniciarSesion(usuario, contrasenna);
+        if(usuarioValidado.getId()!=null){
             HttpSession sesion = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
             sesion.setAttribute("usuario", usuario);
             return "inicio";
