@@ -1,0 +1,271 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Página Principal</title>
+        <link href="../resources/css/inicio.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&amp;family=Roboto:wght@700&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&amp;display=swap" rel="stylesheet" />
+    </h:head>
+
+    <h:body style="background-image: url('../resources/imagenes/fondo.jpg'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;">
+
+        <div id="top">
+            <img class="mar" src="../resources/imagenes/Logo.png" width="300px" alt="logo" />
+            <header>
+                <hr />
+                <div>
+                    <nav>
+                        <ul style="display: inline;">
+                            <li><a href="TemPaginaPrin.xhtml" class="problem"><strong>INICIO</strong></a></li>
+                            <li><a href="Preguntas_Frecuentes.html" class="problem"><strong>PREGUNTAS FRECUENTES</strong></a></li>
+                            <li><a href="canales_contacto.html" class="problem"><strong>CANALES DE CONTACTO</strong></a></li>
+                            <li><a href="quienes_somos.html" class="problem"><strong>¿QUIENES SOMOS?</strong></a></li>
+                            <li><a href="Dashboard.html" class="problem"><strong>DASHBOARD</strong></a></li>
+                            <li style="list-style: none;">
+                                <h:form id="logoutForm" style="display:inline; background-color:transparent; border:none; padding:0; margin:0;">
+                                    <h:commandButton id="logoutBtn"
+                                                     action="#{login.cerrarSesion()}"
+                                                     value=""
+                                                     style="display:none; visibility:hidden; opacity:0;" />
+                                    <a href="#" title="Cerrar sesión"
+                                       onclick="document.getElementById('logoutForm:logoutBtn').click(); return false;"
+                                       style="color: white; font-size: 20px; background-color: transparent; border: none; padding: 0; margin: 0;">
+                                        <i class="fa-solid fa-right-from-bracket"></i>
+                                    </a>
+                                </h:form>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <hr />
+            </header>
+        </div>
+        <br /><br />    
+        <div class="container mt-5">
+            <p class="text-center"><strong>Selecciona tu medicamento</strong></p>
+
+            <form class="row" style="width: 65%; margin: auto;">
+                <div class="col-md-12 mb-3">
+                    <label for="inputEmail4" class="form-label">Paciente</label>
+                    <input type="text" class="form-control"
+                           id="inputEmail4"
+                           value="#{login.usuarioValidado.nombreCompleto}"
+                           readonly="true" />
+                </div>
+
+                <div class="col-md-6">
+                    <label for="opciones" class="form-label">Medicamentos Tiroides</label>
+                    <select id="opciones" name="opciones" class="form-select">
+                        <option selected="selected">Medicamento</option>
+                        <option>Levotiroxina sódica</option>
+                        <option>Liotironina</option>
+                        <option>Metimazol</option>
+                        <option>Propiltiouracilo</option>
+                        <option>Yodo radiactivo</option>
+                        <option>Propranolol</option>
+                        <option>Atenolol</option>
+                    </select>
+
+                    <label for="informacion" class="form-label">Dosificación</label>
+                    <input type="text" class="form-control" id="informacion" name="informacion" readonly="readonly" />
+
+                    <label for="descripcion" class="form-label">Descripción</label>
+                    <input type="text" class="form-control" id="descripcion" name="descripcion" readonly="readonly" />
+
+                    <label for="Laboratorio" class="form-label">Laboratorio</label>
+                    <input type="text" class="form-control" id="Laboratorio" name="Laboratorio" readonly="readonly" />
+
+                    <label for="Concentracion" class="form-label">Concentración</label>
+                    <input type="text" class="form-control" id="Concentracion" name="Concentracion" readonly="readonly" />
+
+                    <label for="rutaadmin" class="form-label">Ruta de Administración</label>
+                    <input type="text" class="form-control" id="rutaadmin" name="rutaadmin" readonly="readonly" />
+
+                    <label for="Estado" class="form-label">Estado medicamento</label>
+                    <input type="text" class="form-control" id="Estado" name="Estado" readonly="readonly" />
+                </div>
+
+                <div class="col-md-6">
+                    <img style="display: none; max-width: 400px; height: 450px;" id="levoti" src="../resources/imagenes/Levotiroxina.png" alt="Levotiroxina sódica" />
+                    <img style="display: none; max-width: 400px; height: 450px;" id="Liotironina" src="../resources/imagenes/Liotironina.png" alt="Liotironina" />
+                    <img style="display: none; max-width: 400px; height: 450px;" id="Metimazol" src="../resources/imagenes/Metimazol.png" alt="Metimazol" />
+                    <img style="display: none; max-width: 400px; height: 450px;" id="Propiltiouracilo" src="../resources/imagenes/Propiltiouracilo.png" alt="Propiltiouracilo" />
+                    <img style="display: none; max-width: 400px; height: 450px;" id="Yodo" src="../resources/imagenes/Yodo_radiactivo.png" alt="Yodo radiactivo" />
+                    <img style="display: none; max-width: 400px; height: 450px;" id="Propranolol" src="../resources/imagenes/Propranolol.png" alt="Propranolol" />
+                    <img style="display: none; max-width: 400px; height: 450px;" id="Atenolol" src="../resources/imagenes/Atenolol.png" alt="Atenolol" />
+                </div>
+            </form>
+        </div>
+
+
+        <br /><br />
+        <div class="per"></div>
+        <div id="bottom">
+            <div class="grid text-center" style="--bs-columns: 3; background-color: hsl(180, 18%, 93%);">
+                <div><strong>DATOS DE CONTACTO</strong><br />
+                    <div class="dat">
+                        <span>PBX:</span> <a href="#">+57(3045385566)</a><br />
+                        <span>Línea Nacional:</span> <a href="#">+57 01800056987</a><br />
+                        <span>Línea Administrativa:</span> <a href="#">+57(3045385566)</a><br />
+                        <span>Línea Anticorrupción Anónima:</span> <a href="#">+57(3045385566)</a><br />
+                        <span>Dirección: Av.15 # 115 - 56</span><br />
+                        <span>Bogotá, Colombia</span><br />
+                    </div>
+                </div>
+                <div><strong>DIRECTORIO</strong><br />
+                    <div class="dat">
+                        <a href="#">Asesores autorizados</a><br />
+                        <span>Línea Nacional:</span> <a href="#">Red de distribución</a><br />
+                        <span>Línea Administrativa:</span> <a href="#">Mapa del sitio</a><br />
+                    </div>
+                </div>
+                <div><strong>TRANSPARENCIA</strong><br />
+                    <div class="dat">
+                        <a href="#">Canales de denuncia</a><br />
+                        <a href="#">Gestión integral de riesgos</a><br />
+                        <span>Línea Administrativa:</span> <a href="#">Mapa del sitio</a><br />
+                    </div>
+                </div>
+                <div><strong>CONSUMIDOR FINANCIERO</strong><br />
+                    <div class="dat">
+                        <a href="#">Asesores autorizados</a><br />
+                        <span>Línea Nacional:</span> <a href="#">Red de distribución</a><br />
+                        <span>Línea Administrativa:</span> <a href="#">Mapa del sitio</a><br />
+                    </div>
+                </div>
+                <div><strong>NOTIFICACIONES JUDICIALES</strong><br />
+                    <div class="dat">
+                        <span>Email:</span> <a href="#">cliente@croniclife.com.co</a><br />
+                    </div>
+                </div>
+                <div><strong>SÍGUENOS</strong><br />
+                    <div>
+                        <a class="Facebook sep" href="https://www.facebook.com/?locale=es_LA" target="_blank">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+                        <a class="Whatsapp sep" href="https://www.whatsapp.com/?lang=es_LA" target="_blank">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                        <a class="TikTok sep" href="https://www.tiktok.com/@camilo?lang=es" target="_blank">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                        <a class="Instagram sep" href="https://www.instagram.com/" target="_blank">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div>
+                <footer>
+                    <p>&copy; 2024 CRONICLIFE. Todos los derechos reservados.</p>
+                </footer>
+            </div>
+            <br /><br />
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+        <script>
+                                               $(document).ready(function () {
+                                                   const nombres = ["Juan", "Ana", "Pedro", "María", "Luis", "Carla"];
+                                                   const nombreAleatorio = nombres[Math.floor(Math.random() * nombres.length)];
+                                                   $("#welcome-message").text(`¡Hola, ${nombreAleatorio}!`);
+
+                                                   $("#opciones").change(function () {
+                                                       const valor = $(this).val();
+                                                       let texto = "", texto2 = "", texto3 = "", texto4 = "", texto5 = "", texto6 = "", imagenID = "";
+
+                                                       switch (valor) {
+                                                           case "Levotiroxina sódica":
+                                                               texto = "Tomar 1 hora antes del desayuno";
+                                                               texto2 = "Tratamiento del hipotiroidismo.";
+                                                               texto3 = "Aventis Pharma S.A.";
+                                                               texto4 = "25ML";
+                                                               texto5 = "Oral";
+                                                               texto6 = "Disponible";
+                                                               imagenID = "levoti";
+                                                               break;
+                                                           case "Liotironina":
+                                                               texto = "Tomar cada 12 horas";
+                                                               texto2 = "Tratamiento del hipotiroidismo.";
+                                                               texto3 = "Bayer Cropscience S.A.";
+                                                               texto4 = "56ML";
+                                                               texto5 = "Oral";
+                                                               texto6 = "Disponible";
+                                                               imagenID = "Liotironina";
+                                                               break;
+                                                           case "Metimazol":
+                                                               texto = "Tomar cada 6 horas";
+                                                               texto2 = "Tratamiento del hipotiroidismo.";
+                                                               texto3 = "Enka de Colombia S.A.";
+                                                               texto4 = "125ML";
+                                                               texto5 = "Oral";
+                                                               texto6 = "Disponible";
+                                                               imagenID = "Metimazol";
+                                                               break;
+                                                           case "Propiltiouracilo":
+                                                               texto = "Tomar cada 8 horas";
+                                                               texto2 = "Tratamiento del hipotiroidismo.";
+                                                               texto3 = "Firmenich S.A.";
+                                                               texto4 = "50ML";
+                                                               texto5 = "Oral";
+                                                               texto6 = "Disponible";
+                                                               imagenID = "Propiltiouracilo";
+                                                               break;
+                                                           case "Yodo radiactivo":
+                                                               texto = "Aplicar en las noches";
+                                                               texto2 = "Tratamiento del hipotiroidismo.";
+                                                               texto3 = "Procaps S.A.";
+                                                               texto4 = "100GR";
+                                                               texto5 = "Tópica";
+                                                               texto6 = "Disponible";
+                                                               imagenID = "Yodo";
+                                                               break;
+                                                           case "Propranolol":
+                                                               texto = "Tomar cada 7 horas";
+                                                               texto2 = "Tratamiento del hipotiroidismo.";
+                                                               texto3 = "Reckitt Benckiser Colombia S.A.";
+                                                               texto4 = "30ML";
+                                                               texto5 = "Oral";
+                                                               texto6 = "Agotado";
+                                                               imagenID = "Propranolol";
+                                                               break;
+                                                           case "Atenolol":
+                                                               texto = "Tomar cada 3 días";
+                                                               texto2 = "Tratamiento del hipotiroidismo.";
+                                                               texto3 = "MK";
+                                                               texto4 = "50ML";
+                                                               texto5 = "Oral";
+                                                               texto6 = "Agotado";
+                                                               imagenID = "Atenolol";
+                                                               break;
+                                                       }
+
+                                                       // Mostrar solo la imagen seleccionada
+                                                       $("img").hide();
+                                                       if (imagenID !== "") {
+                                                           $("#" + imagenID).show();
+                                                       }
+
+                                                       $("#informacion").val(texto);
+                                                       $("#descripcion").val(texto2);
+                                                       $("#Laboratorio").val(texto3);
+                                                       $("#Concentracion").val(texto4);
+                                                       $("#rutaadmin").val(texto5);
+                                                       $("#Estado").val(texto6);
+                                                   });
+                                               });
+        </script>
+
+    </h:body>
+</html>

@@ -58,7 +58,7 @@ public class Solicitudes implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "NUMERO_DOCUMENTO")
-    private int numeroDocumento;
+    private Integer numeroDocumento;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 120)
@@ -160,11 +160,11 @@ public class Solicitudes implements Serializable {
         this.tipoDocumento = tipoDocumento;
     }
 
-    public int getNumeroDocumento() {
+    public Integer getNumeroDocumento() {
         return numeroDocumento;
     }
 
-    public void setNumeroDocumento(int numeroDocumento) {
+    public void setNumeroDocumento(Integer numeroDocumento) {
         this.numeroDocumento = numeroDocumento;
     }
 

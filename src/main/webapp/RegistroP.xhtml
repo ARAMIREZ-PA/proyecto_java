@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Registro | CronicLife</title>
+
+        <!-- Estilos personalizados -->
+
+        <link href="resources/css/inicio.css" rel="stylesheet" type="text/css"/>
+        <h:outputStylesheet name="/css/default.css"/>
+        <h:outputStylesheet name="/css/cssLayout.css"/>
+
+        <!-- Estilos externos -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&amp;family=Roboto:wght@700&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&amp;display=swap" rel="stylesheet" />
+
+        <!-- DataTables -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" />
+
+        <!-- JS para DataTables -->
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+
+        <!-- Estilo para eliminar colores de fondo -->
+        <style>
+            body, html {
+                background: transparent !important;
+                background-color: transparent !important;
+                background-image: none !important;
+            }
+
+            #top, #content, #bottom {
+                background: transparent !important;
+                background-color: transparent !important;
+                box-shadow: none !important;
+            }
+
+            .table {
+                background-color: white !important;
+            }
+        </style>
+    </h:head>
+
+    <h:body style="background-image: url('../resources/imagenes/fondo.jpg');
+                   background-size: cover;
+                   background-repeat: no-repeat;
+                   background-attachment: fixed;
+                   background-color: transparent;">
+
+        <!-- 🔷 Encabezado -->
+        <div id="top">
+            <img class="mar" src="resources/imagenes/Logo.png" width="300px" alt="logo" />
+            <header>
+                <hr />
+                <div>
+                    <nav>
+                        <ul style="display: inline;">
+                            <li><a href="TemPaginaPrin.xhtml" class="problem"><strong>INICIO</strong></a></li>
+                            <li><a href="Preguntas_Frecuentes.html" class="problem"><strong>PREGUNTAS FRECUENTES</strong></a></li>
+                            <li><a href="canales_contacto.html" class="problem"><strong>CANALES DE CONTACTO</strong></a></li>
+                            <li><a href="quienes_somos.html" class="problem"><strong>¿QUIENES SOMOS?</strong></a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <hr />
+            </header>
+        </div>
+
+        <!-- 🔷 Contenido -->
+        <div id="content" class="center_content" style="padding: 20px;">
+            <ui:insert name="content" />
+        </div>
+
+        <!-- 🔷 Pie de página -->
+        <div id="bottom">
+            <div class="grid text-center" style="--bs-columns: 3; background-color: hsl(180, 18%, 93%); padding: 20px;">
+                <div><strong>DATOS DE CONTACTO</strong><br />
+                    <div class="dat">
+                        <span>PBX:</span> <a href="#">+57(3045385566)</a><br />
+                        <span>Línea Nacional:</span> <a href="#">+57 01800056987</a><br />
+                        <span>Línea Administrativa:</span> <a href="#">+57(3045385566)</a><br />
+                        <span>Línea Anticorrupción Anónima:</span> <a href="#">+57(3045385566)</a><br />
+                        <span>Dirección: Av.15 # 115 - 56</span><br />
+                        <span>Bogotá, Colombia</span><br />
+                    </div>
+                </div>
+                <div><strong>DIRECTORIO</strong><br />
+                    <div class="dat">
+                        <a href="#">Asesores autorizados</a><br />
+                        <a href="#">Red de distribución</a><br />
+                        <a href="#">Mapa del sitio</a><br />
+                    </div>
+                </div>
+                <div><strong>TRANSPARENCIA</strong><br />
+                    <div class="dat">
+                        <a href="#">Canales de denuncia</a><br />
+                        <a href="#">Gestión integral de riesgos</a><br />
+                        <a href="#">Mapa del sitio</a><br />
+                    </div>
+                </div>
+                <div><strong>CONSUMIDOR FINANCIERO</strong><br />
+                    <div class="dat">
+                        <a href="#">Asesores autorizados</a><br />
+                        <a href="#">Red de distribución</a><br />
+                        <a href="#">Mapa del sitio</a><br />
+                    </div>
+                </div>
+                <div><strong>NOTIFICACIONES JUDICIALES</strong><br />
+                    <div class="dat">
+                        <span>Email:</span> <a href="#">cliente@croniclife.com.co</a><br />
+                    </div>
+                </div>
+                <div><strong>SÍGUENOS</strong><br />
+                    <div>
+                        <a class="Facebook sep" href="https://www.facebook.com/?locale=es_LA" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                        <a class="Whatsapp sep" href="https://www.whatsapp.com/?lang=es_LA" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a class="TikTok sep" href="https://www.tiktok.com/@camilo?lang=es" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                        <a class="Instagram sep" href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div>
+                <footer>
+                    <p>&copy; 2024 CRONICLIFE. Todos los derechos reservados.</p>
+                </footer>
+            </div>
+        </div>
+
+    </h:body>
+</ui:composition>

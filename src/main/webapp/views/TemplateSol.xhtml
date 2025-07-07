@@ -1,0 +1,109 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./Reportes.xhtml">
+
+    
+    <ui:define name="content">
+        <div class="container">
+            <h3 style="color: rgb(51, 174, 174); text-align: center; margin-top: 30px;">
+                SOLICITUD APROBACIÓN ÓRDENES MÉDICAS
+                        <h2 class="cer">¡Hola, #{login.usuarioValidado.primerNombre}!</h2>
+        <p style="text-align: center;"><strong>Aquí puedes realizar todas las solicitudes de órdenes que requieras</strong></p>
+
+ 
+            </h3>
+
+            <h:form style="width: 65%; margin: auto;" class="row" enctype="multipart/form-data">
+            <div class="col-md-6 mb-3">
+                <h:outputLabel for="tipoDoc" value="Tipo Documento" styleClass="form-label"/>
+                <h:selectOneMenu id="tipoDoc" value="#{solicitudes.tipoDocumento}" styleClass="form-select">
+                    <f:selectItem itemLabel="Seleccione..." itemValue="" />
+                    <f:selectItem itemLabel="Cédula de ciudadanía" itemValue="CC" />
+                    <f:selectItem itemLabel="Cédula de extranjería" itemValue="CE" />
+                    <f:selectItem itemLabel="PPT" itemValue="PPT" />
+                    <f:selectItem itemLabel="Tarjeta de identidad" itemValue="TI" />
+                </h:selectOneMenu>
+                <h:message for="tipoDoc" styleClass="text-danger small" />
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <h:outputLabel for="numDoc" value="Número de documento" styleClass="form-label"/>
+                <h:inputText id="numDoc" value="#{solicitudes.numeroDocumento}" required="true" styleClass="form-control" />
+                <h:message for="numDoc" styleClass="text-danger small" />
+            </div>
+
+            <div class="col-12 mb-3">
+                <h:outputLabel for="nombre" value="Nombre Completo" styleClass="form-label"/>
+                <h:inputText id="nombre" value="#{solicitudes.nombreCompleto}" required="true" styleClass="form-control" />
+            </div>
+
+            <div class="col-12 mb-3">
+                <h:outputLabel for="direccion" value="Dirección de Residencia" styleClass="form-label"/>
+                <h:inputText id="direccion" value="#{solicitudes.direccion}" required="true" styleClass="form-control" />
+            </div>
+
+            <div class="col-12 mb-3">
+                <h:outputLabel for="indicaciones" value="Indicaciones" styleClass="form-label"/>
+                <h:inputText id="indicaciones" value="#{solicitudes.indicaciones}" styleClass="form-control" />
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <h:outputLabel for="departamento" value="Departamento de Residencia" styleClass="form-label"/>
+                <h:selectOneMenu id="departamento" value="#{solicitudes.departamento}" styleClass="form-select">
+                    <f:selectItem itemLabel="Seleccione..." itemValue="" />
+                    <f:selectItem itemLabel="Bogotá D.C" itemValue="Bogotá" />
+                    <f:selectItem itemLabel="Cali" itemValue="Cali" />
+                    <f:selectItem itemLabel="Medellín" itemValue="Medellin" />
+                    <f:selectItem itemLabel="Cundinamarca" itemValue="Cundinamarca" />
+                </h:selectOneMenu>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <h:outputLabel for="ciudad" value="Ciudad de Residencia" styleClass="form-label"/>
+                <h:selectOneMenu id="ciudad" value="#{solicitudes.ciudad}" styleClass="form-select">
+                    <f:selectItem itemLabel="Seleccione..." itemValue="" />
+                    <f:selectItem itemLabel="Bogotá D.C" itemValue="Bogotá" />
+                    <f:selectItem itemLabel="Cali" itemValue="Cali" />
+                    <f:selectItem itemLabel="Medellín" itemValue="Medellin" />
+                    <f:selectItem itemLabel="Cundinamarca" itemValue="Cundinamarca" />
+                </h:selectOneMenu>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <h:outputLabel for="correo" value="Correo Electrónico" styleClass="form-label"/>
+                <h:inputText id="correo" value="#{solicitudes.correo}" required="true" styleClass="form-control" />
+            </div>
+            <div class="col-md-6 mb-3">
+                <h:outputLabel for="correoConf" value="Confirmación de Correo" styleClass="form-label"/>
+                <h:inputText id="correoConf" value="#{solicitudes.correoConfirmacion}" required="true" styleClass="form-control" />
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <h:outputLabel for="movil" value="Móvil para notificaciones" styleClass="form-label"/>
+                <h:inputText id="movil" value="#{solicitudes.movil}" required="true" styleClass="form-control" />
+            </div>
+            <div class="col-md-6 mb-3">
+                <h:outputLabel for="movilConf" value="Confirmar móvil" styleClass="form-label"/>
+                <h:inputText id="movilConf" value="#{solicitudes.movilConfirmacion}" required="true" styleClass="form-control" />
+            </div>
+
+            <div class="col-12 mb-3">
+                <h:outputLabel for="ordenFile" value="Cargar Orden Médica" styleClass="form-label"/>
+                <h:inputFile id="ordenFile" value="#{solicitudes.archivoOrden}" styleClass="form-control" />
+            </div>
+
+            <div class="col-12 mb-3">
+                <h:selectBooleanCheckbox id="terminos" value="#{solicitudes.aceptaTerminos}" />
+                <h:outputLabel for="terminos" value="Aceptar Términos y condiciones" style="margin-left: 8px;" />
+            </div>
+
+            <div class="col-12 text-center">
+                <h:commandButton value="Enviar" action="#{solicitudes.enviar()}" styleClass="btn btn-primary" />
+            </div>
+        </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>

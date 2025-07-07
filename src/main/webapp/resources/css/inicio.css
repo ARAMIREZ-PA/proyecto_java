@@ -27,6 +27,10 @@ body {
     margin: 70px;
     justify-content: center;
     align-items: center;
+  background-image: url("#{resource['imagenes/fondo.jpg']}");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 nav ul li {
@@ -761,4 +765,56 @@ td {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+
+
+/* Estilo para el botón que solo muestra el ícono */
+.icon-only {
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+    color: white !important;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Oculta el texto del botón y solo muestra el ícono */
+.icon-only::before {
+    content: "\f2f5"; /* Unicode Font Awesome para 'sign-out-alt' o 'right-from-bracket' */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+
+/* Elimina cualquier caja o fondo que JSF esté inyectando */
+.icon-only[type="submit"] {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+body, html {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+}
+
+#top, #content, #bottom {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+
+.acciones-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    background-color: transparent !important;
+}
+
+.jsf-data-table td {
+    background-color: white !important;
 }

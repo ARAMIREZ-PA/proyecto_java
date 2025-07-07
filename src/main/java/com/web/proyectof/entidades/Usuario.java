@@ -43,14 +43,15 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Usuario.findByPasswordUsuario", query = "SELECT u FROM Usuario u WHERE u.passwordUsuario = :passwordUsuario"),
     @NamedQuery(name = "Usuario.findByPasswordConfirmado", query = "SELECT u FROM Usuario u WHERE u.passwordConfirmado = :passwordConfirmado"),
     @NamedQuery(name = "Usuario.findByTipoUsuario", query = "SELECT u FROM Usuario u WHERE u.tipoUsuario = :tipoUsuario"),
-    @NamedQuery(name = "Usuario.findByDirecccionUsuario", query = "SELECT u FROM Usuario u WHERE u.direcccionUsuario = :direcccionUsuario"),
+    @NamedQuery(name = "Usuario.findByDireccionUsuario", query = "SELECT u FROM Usuario u WHERE u.direccionUsuario = :direccionUsuario"),
     @NamedQuery(name = "Usuario.findByEstadoUsuario", query = "SELECT u FROM Usuario u WHERE u.estadoUsuario = :estadoUsuario"),
     @NamedQuery(name = "Usuario.findByTipoRh", query = "SELECT u FROM Usuario u WHERE u.tipoRh = :tipoRh"),
     @NamedQuery(name = "Usuario.findByFechaNacimiento", query = "SELECT u FROM Usuario u WHERE u.fechaNacimiento = :fechaNacimiento"),
     @NamedQuery(name = "Usuario.findByGenero", query = "SELECT u FROM Usuario u WHERE u.genero = :genero"),
     @NamedQuery(name = "Usuario.findByFechaExpedicion", query = "SELECT u FROM Usuario u WHERE u.fechaExpedicion = :fechaExpedicion"),
     @NamedQuery(name = "Usuario.findByCiudadResidencia", query = "SELECT u FROM Usuario u WHERE u.ciudadResidencia = :ciudadResidencia"),
-    @NamedQuery(name = "Usuario.findByDepartamentoResidencia", query = "SELECT u FROM Usuario u WHERE u.departamentoResidencia = :departamentoResidencia")})
+    @NamedQuery(name = "Usuario.findByDepartamentoResidencia", query = "SELECT u FROM Usuario u WHERE u.departamentoResidencia = :departamentoResidencia"),
+    @NamedQuery(name = "Usuario.findByNombreCompleto", query = "SELECT u FROM Usuario u WHERE u.nombreCompleto = :nombreCompleto")})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -118,8 +119,8 @@ public class Usuario implements Serializable {
     @Column(name = "TIPO_USUARIO")
     private String tipoUsuario;
     @Size(max = 120)
-    @Column(name = "DIRECCCION_USUARIO")
-    private String direcccionUsuario;
+    @Column(name = "DIRECCION_USUARIO")
+    private String direccionUsuario;
     @Size(max = 8)
     @Column(name = "ESTADO_USUARIO")
     private String estadoUsuario;
@@ -141,6 +142,9 @@ public class Usuario implements Serializable {
     @Size(max = 45)
     @Column(name = "DEPARTAMENTO_RESIDENCIA")
     private String departamentoResidencia;
+    @Size(max = 120)
+    @Column(name = "NOMBRE_COMPLETO")
+    private String nombreCompleto;
 
     public Usuario() {
     }
@@ -268,12 +272,12 @@ public class Usuario implements Serializable {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public String getDirecccionUsuario() {
-        return direcccionUsuario;
+    public String getDireccionUsuario() {
+        return direccionUsuario;
     }
 
-    public void setDirecccionUsuario(String direcccionUsuario) {
-        this.direcccionUsuario = direcccionUsuario;
+    public void setDireccionUsuario(String direccionUsuario) {
+        this.direccionUsuario = direccionUsuario;
     }
 
     public String getEstadoUsuario() {
@@ -332,6 +336,14 @@ public class Usuario implements Serializable {
         this.departamentoResidencia = departamentoResidencia;
     }
 
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -356,5 +368,5 @@ public class Usuario implements Serializable {
     public String toString() {
         return "com.web.proyectof.entidades.Usuario[ id=" + id + " ]";
     }
-    
+
 }

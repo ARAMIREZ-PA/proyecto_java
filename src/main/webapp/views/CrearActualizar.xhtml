@@ -1,0 +1,198 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./Reportes.xhtml">
+
+    <ui:define name="content">
+        <div class="container">
+
+            <h3 style="color: rgb(51, 174, 174); text-align: center; margin-top: 30px;">
+                ¡Hola, #{login.usuarioValidado.primerNombre}!
+            </h3>
+            <h3 style="color: rgb(51, 174, 174); text-align: center; margin-top: 30px;">
+                SOLICITUD APROBACIÓN ÓRDENES MÉDICAS
+            </h3>
+
+            <h:form id="formSolicitud" style="width: 80%; margin: auto;" class="row" enctype="multipart/form-data">
+                <!-- Tipo Documento -->
+                <div class="col-md-6 mb-3 text-start">
+                    <h:outputLabel for="tipoDoc" value="Tipo Documento" styleClass="form-label"/>
+                    <h:selectOneMenu id="tipoDoc"
+                                     value="#{solicitudesController.con.tipoDocumento}"
+                                     styleClass="form-select"
+                                     disabled="#{solicitudesController.con.numeroDocumento != null}">
+                        <f:selectItem itemLabel="Seleccione..." itemValue="" />
+                        <f:selectItem itemLabel="Cédula de ciudadanía (CC)" itemValue="CC" />
+                        <f:selectItem itemLabel="Cédula de extranjería (CE)" itemValue="CE" />
+                        <f:selectItem itemLabel="Tarjeta de identidad (TI)" itemValue="TI" />
+                        <f:selectItem itemLabel="Permiso por Protección (PA)" itemValue="PA" />
+                    </h:selectOneMenu>
+                    <h:message for="tipoDoc" styleClass="text-danger small" />
+                </div>
+
+                <!-- Número de Documento -->
+                <div class="col-md-6 mb-3 text-start">
+                    <h:outputLabel for="numDoc" value="Número de documento" styleClass="form-label"/>
+                    <h:inputText id="numDoc"
+                                 value="#{solicitudesController.con.numeroDocumento}"
+                                 required="true"
+                                 styleClass="form-control"
+                                 disabled="#{solicitudesController.con.numeroDocumento != null}" />
+                    <h:message for="numDoc" styleClass="text-danger small" />
+                </div>
+
+                <!-- Nombre Completo -->
+                <div class="col-12 mb-3 text-start">
+                    <h:outputLabel for="nombre" value="Nombre Completo" styleClass="form-label"/>
+                    <h:inputText id="nombre" value="#{solicitudesController.con.nombreCompleto}" required="true" styleClass="form-control" />
+                    <h:message for="nombre" styleClass="text-danger small" />
+                </div>
+
+                <!-- Dirección -->
+                <div class="col-12 mb-3 text-start">
+                    <h:outputLabel for="direccion" value="Dirección de Residencia" styleClass="form-label"/>
+                    <h:inputText id="direccion" value="#{solicitudesController.con.direccionResidencia}" required="true" styleClass="form-control" />
+                    <h:message for="direccion" styleClass="text-danger small" />
+                </div>
+
+                <!-- Indicaciones -->
+                <div class="col-12 mb-3 text-start">
+                    <h:outputLabel for="indicaciones" value="Indicaciones" styleClass="form-label"/>
+                    <h:inputText id="indicaciones" value="#{solicitudesController.con.indicaciones}" styleClass="form-control" />
+                </div>
+
+                <!-- Departamento -->
+                <div class="col-md-6 mb-3 text-start">
+                    <h:outputLabel for="departamento" value="Departamento" styleClass="form-label"/>
+                    <h:selectOneMenu id="departamento" value="#{solicitudesController.con.departamento}" styleClass="form-select">
+                        <f:selectItem itemLabel="Seleccione..." itemValue="" />
+                        <f:selectItem itemLabel="Antioquia" itemValue="Antioquia" />
+                        <f:selectItem itemLabel="Cundinamarca" itemValue="Cundinamarca" />
+                        <f:selectItem itemLabel="Valle del Cauca" itemValue="Valle del Cauca" />
+                    </h:selectOneMenu>
+                    <h:message for="departamento" styleClass="text-danger small" />
+                </div>
+
+                <!-- Ciudad -->
+                <div class="col-md-6 mb-3 text-start">
+                    <h:outputLabel for="ciudad" value="Ciudad" styleClass="form-label"/>
+                    <h:selectOneMenu id="ciudad" value="#{solicitudesController.con.ciudad}" styleClass="form-select">
+                        <f:selectItem itemLabel="Seleccione..." itemValue="" />
+                        <f:selectItem itemLabel="Bogotá" itemValue="Bogotá" />
+                        <f:selectItem itemLabel="Medellín" itemValue="Medellín" />
+                        <f:selectItem itemLabel="Cali" itemValue="Cali" />
+                    </h:selectOneMenu>
+                    <h:message for="ciudad" styleClass="text-danger small" />
+                </div>
+
+                <!-- Correo -->
+                <div class="col-md-6 mb-3 text-start">
+                    <h:outputLabel for="correo" value="Correo Electrónico" styleClass="form-label"/>
+                    <h:inputText id="correo" value="#{solicitudesController.con.correoElectronico}" required="true" styleClass="form-control" />
+                    <h:message for="correo" styleClass="text-danger small" />
+                </div>
+                <div class="col-md-6 mb-3 text-start">
+                    <h:outputLabel for="correoConf" value="Confirmación de Correo" styleClass="form-label"/>
+                    <h:inputText id="correoConf" value="#{solicitudesController.con.confirmacionCorreo}" required="true" styleClass="form-control" />
+                </div>
+
+                <!-- Celular -->
+                <div class="col-md-6 mb-3 text-start">
+                    <h:outputLabel for="movil" value="Celular" styleClass="form-label"/>
+                    <h:inputText id="movil" value="#{solicitudesController.con.celular}" required="true" styleClass="form-control" />
+                    <h:message for="movil" styleClass="text-danger small" />
+                </div>
+                <div class="col-md-6 mb-3 text-start">
+                    <h:outputLabel for="movilConf" value="Confirmar Celular" styleClass="form-label"/>
+                    <h:inputText id="movilConf" value="#{solicitudesController.con.confirmacionCelular}" required="true" styleClass="form-control" />
+                </div>
+
+                <!-- Archivo -->
+                <div class="col-12 mb-3 text-start">
+                    <h:outputLabel for="ordenFile" value="Cargar Orden Médica" styleClass="form-label"/>
+                    <h:inputFile id="ordenFile" value="#{solicitudesController.archivoOrdenMedica}" styleClass="form-control" required="true" />
+                    <h:message for="ordenFile" styleClass="text-danger small" />
+                </div>
+
+                <!-- Orden médica -->
+                <div class="col-md-6 mb-3 text-start">
+                    <h:outputLabel for="orden" value="Orden Médica" styleClass="form-label"/>
+                    <h:inputText id="orden" value="#{solicitudesController.con.ordenMedica}" styleClass="form-control" />
+                </div>
+
+                <!-- Confirmar términos -->
+                <div class="col-md-6 mb-3 text-start">
+                    <h:outputLabel for="terminos" value="Confirmar Términos" styleClass="form-label"/>
+                    <h:inputText id="terminos" value="#{solicitudesController.con.confirmaTerminos}" styleClass="form-control" />
+                </div>
+
+                <!-- Botones -->
+                <div class="col-12 text-center">
+                    <h:messages id="mensajes" globalOnly="true" styleClass="d-none" />
+                    <h:commandButton id="registrarBtn" value="Registrar Solicitud"
+                                     action="#{solicitudesController.crearP2()}"
+                                     onclick="return validarFormulario();"
+                                     rendered="#{solicitudesController.con.numeroDocumento == null}"
+                                     styleClass="btn btn-primary px-4 me-2" />
+
+                    <h:commandButton id="editarBtn" value="Editar Solicitud"
+                                     action="#{solicitudesController.editarSolicitudP2()}"
+                                     onclick="return validarFormulario();"
+                                     rendered="#{solicitudesController.con.numeroDocumento != null}"
+                                     styleClass="btn btn-primary px-4 me-2" />
+
+                    
+                    <h:panelGroup rendered="#{login.usuarioValidado.tipoUsuario eq 'Paciente'}">
+                        <h:button value="Regresar" outcome="TemPaginaPrin.xhtml" styleClass="btn btn-secondary px-4" />
+                    </h:panelGroup>
+
+
+
+                    <h:panelGroup rendered="#{login.usuarioValidado.tipoUsuario eq 'Administrador'}">
+                        <h:button value="Regresar" outcome="TemplateReportes.xhtml" styleClass="btn btn-secondary px-4" />
+                    </h:panelGroup>
+
+
+                </div>
+            </h:form>
+        </div>
+
+        <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script type="text/javascript">
+                                         // <![CDATA[
+                                         window.addEventListener('load', function () {
+                                             var msgBox = document.getElementById('formSolicitud:mensajes');
+                                             if (msgBox && msgBox.innerText.trim() !== '') {
+                                                 Swal.fire({
+                                                     icon: 'success',
+                                                     title: '¡Éxito!',
+                                                     text: msgBox.innerText.trim(),
+                                                     confirmButtonColor: '#3085d6'
+                                                 });
+                                             }
+                                         });
+
+                                         function validarFormulario() {
+                                             var celular = document.getElementById("formSolicitud:movil").value.trim();
+                                             var celularConf = document.getElementById("formSolicitud:movilConf").value.trim();
+                                             var correo = document.getElementById("formSolicitud:correo").value.trim();
+                                             var correoConf = document.getElementById("formSolicitud:correoConf").value.trim();
+
+                                             if (celular !== celularConf) {
+                                                 Swal.fire("Error", "El número de celular y su confirmación no coinciden.", "warning");
+                                                 return false;
+                                             }
+
+                                             if (correo !== correoConf) {
+                                                 Swal.fire("Error", "El correo electrónico y su confirmación no coinciden.", "warning");
+                                                 return false;
+                                             }
+
+                                             return true;
+                                         }
+                                         // ]]>
+        </script>
+    </ui:define>
+</ui:composition>

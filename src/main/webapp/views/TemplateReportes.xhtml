@@ -1,0 +1,151 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./Reportes.xhtml">
+
+    <ui:define name="content">
+
+        <div class="container">
+
+            <h3 style="color: rgb(51, 174, 174); text-align: center; margin-top: 30px;">
+                ¡Hola, #{login.usuarioValidado.primerNombre}!
+            </h3>
+
+            <h3 style="color: rgb(51, 174, 174); text-align: center; margin-top: 30px;">
+                REPORTE DE SOLICITUDES MÉDICAS
+            </h3>
+
+            <!-- ✅ ÚNICO FORMULARIO -->
+            <h:form style="width: 100%;" class="table-responsive">
+
+                <!-- ✅ MENSAJE GLOBAL DE JSF VISIBLE -->
+                <h:messages globalOnly="true"
+                            layout="table"
+                            styleClass="alert alert-success text-center fade-message"
+                            style="margin-top: 20px; font-size: 16px; font-weight: bold; border-radius: 10px;" />
+
+                <h:dataTable value="#{solicitudesController.obtenerSolicitudes()}" var="item"
+                             styleClass="jsf-data-table display nowrap table table-bordered table-hover table-striped"
+                             headerClass="table-header-custom"
+                             rowClasses="text-center"
+                             style="border-radius: 10px; overflow: hidden; width: 100%;">
+
+                    <h:column>
+                        <f:facet name="header"><h:outputText value="Tipo de Documento" /></f:facet>
+                        #{item.tipoDocumento}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header"><h:outputText value="Número de Documento" /></f:facet>
+                        #{item.numeroDocumento}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header"><h:outputText value="Nombre Completo" /></f:facet>
+                        #{item.nombreCompleto}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header"><h:outputText value="Identificador" /></f:facet>
+                        #{item.idSolicitud}
+                    </h:column>
+
+                    <!-- ✅ ACCIONES -->
+                    <h:column>
+                        <f:facet name="header"><h:outputText value="Acciones" /></f:facet>
+                        <div class="acciones-container">
+                            <h:commandButton value="Editar"
+                                             action="#{solicitudesController.editarSolicitudP1(item)}"
+                                             styleClass="btn btn-outline-info btn-sm" />
+
+                            <h:commandButton value="Eliminar"
+                                             action="#{solicitudesController.eliminarSolicitud(item)}"
+                                             styleClass="btn btn-outline-danger btn-sm"
+                                             onclick="return confirm('¿Está seguro que desea eliminar esta solicitud?');" />
+                        </div>
+                    </h:column>
+                </h:dataTable>
+
+                <!-- BOTONES INFERIORES -->
+                <div class="botones-inferiores mt-3">
+                    <div id="export-buttons-container"></div>
+
+                    <h:commandButton value="Crear Solicitud"
+                                     action="#{solicitudesController.crearP1()}"
+                                     styleClass="btn btn-outline-info btn-sm" />
+
+                    <h:button value="Regresar"
+                              outcome="TemPaginaPrin.xhtml"
+                              styleClass="btn btn-outline-info btn-sm" />
+                </div>
+            </h:form>
+        </div>
+
+        <!-- ✅ JS: DataTables y Ocultar Mensaje -->
+        <script>
+            $(document).ready(function () {
+                // Inicializa DataTable
+                var table = $('.jsf-data-table').DataTable({
+                    dom: 'Bfrtip',
+                    language: {
+                        url: 'https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json'
+                    },
+                    pageLength: 50,
+                    buttons: [
+                        { extend: 'copy', className: 'btn btn-outline-info btn-sm' },
+                        { extend: 'csv', className: 'btn btn-outline-info btn-sm' },
+                        { extend: 'excel', className: 'btn btn-outline-info btn-sm' },
+                        { extend: 'pdf', className: 'btn btn-outline-info btn-sm' },
+                        { extend: 'print', className: 'btn btn-outline-info btn-sm' }
+                    ]
+                });
+
+                table.buttons().container().appendTo('#export-buttons-container');
+
+                // ✅ Ocultar mensajes JSF automáticamente
+                setTimeout(function () {
+                    $('.fade-message').fadeOut('slow');
+                }, 2000); // 2 segundos
+            });
+        </script>
+
+        <!-- ✅ ESTILOS PERSONALIZADOS -->
+        <style>
+            .acciones-container {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .jsf-data-table td,
+            .jsf-data-table th {
+                vertical-align: middle;
+                text-align: center;
+                background-color: white !important;
+            }
+
+            .botones-inferiores {
+                margin-top: 20px;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: flex-start;
+            }
+
+            .btn {
+                border-radius: 20px;
+            }
+
+            .alert {
+                animation: fadeIn 0.7s ease-in-out;
+                box-shadow: 0px 0px 10px rgba(0, 128, 0, 0.3);
+            }
+
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(-10px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+        </style>
+    </ui:define>
+</ui:composition>

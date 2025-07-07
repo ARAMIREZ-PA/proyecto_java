@@ -1,0 +1,165 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="./RegistroP.xhtml">
+
+    <ui:define name="content">
+        <div class="container">
+            <h3 style="color: rgb(51, 174, 174); text-align: center; margin-top: 30px;">
+                REGÍSTRATE EN CRONICLIFE
+            </h3>
+
+            <h:form id="formSolicitud" style="width: 80%; margin: auto;" class="row" enctype="multipart/form-data">
+                
+                <!-- Tipo Documento -->
+                <div class="col-md-6 mb-3 text-start">
+                    <h:outputLabel for="tipoDoc" value="Tipo Documento" styleClass="form-label"/>
+                    <h:selectOneMenu id="tipoDoc"
+                                     value="#{registro.con.tipoDocumento}"
+                                     styleClass="form-select"
+                                     required="true" requiredMessage="Seleccione un tipo de documento">
+                        <f:selectItem itemLabel="Seleccione..." itemValue="" />
+                        <f:selectItem itemLabel="Cédula de ciudadanía (CC)" itemValue="CC" />
+                        <f:selectItem itemLabel="Cédula de extranjería (CE)" itemValue="CE" />
+                        <f:selectItem itemLabel="Tarjeta de identidad (TI)" itemValue="TI" />
+                        <f:selectItem itemLabel="Permiso por Protección (PA)" itemValue="PA" />
+                    </h:selectOneMenu>
+                    <h:message for="tipoDoc" styleClass="text-danger small" />
+                </div>
+
+                <!-- Número de Documento -->
+                <div class="col-md-6 mb-3 text-start">
+                    <h:outputLabel for="numDoc" value="Número de documento" styleClass="form-label"/>
+                    <h:inputText id="numDoc"
+                                 value="#{registro.con.numeroDocumento}"
+                                 required="true" requiredMessage="Número de documento obligatorio"
+                                 styleClass="form-control"
+                                 disabled="#{solicitudesController.con.numeroDocumento != null}" />
+                    <h:message for="numDoc" styleClass="text-danger small" />
+                </div>
+
+                <!-- Nombres y Apellidos -->
+                <div class="col-12 mb-3 text-start">
+                    <h:outputLabel for="Primernombre" value="Primer Nombre" styleClass="form-label"/>
+                    <h:inputText id="Primernombre" value="#{registro.con.primerNombre}" required="true" requiredMessage="Este campo es obligatorio" styleClass="form-control" />
+                    <h:message for="Primernombre" styleClass="text-danger small" />
+                </div>
+
+                <div class="col-12 mb-3 text-start">
+                    <h:outputLabel for="Segundonombre" value="Segundo Nombre" styleClass="form-label"/>
+                    <h:inputText id="Segundonombre" value="#{registro.con.segundoNombre}" styleClass="form-control" />
+                </div>
+
+                <div class="col-12 mb-3 text-start">
+                    <h:outputLabel for="Primerapllido" value="Primer Apellido" styleClass="form-label"/>
+                    <h:inputText id="Primerapllido" value="#{registro.con.primerApellido}" required="true" requiredMessage="Este campo es obligatorio" styleClass="form-control" />
+                    <h:message for="Primerapllido" styleClass="text-danger small" />
+                </div>
+
+                <div class="col-12 mb-3 text-start">
+                    <h:outputLabel for="Segundoapellido" value="Segundo Apellido" styleClass="form-label"/>
+                    <h:inputText id="Segundoapellido" value="#{registro.con.segundoApellido}" styleClass="form-control" />
+                </div>
+
+                <!-- Celular -->
+                <div class="col-md-6 mb-3 text-start">
+                    <h:outputLabel for="movil" value="Celular" styleClass="form-label"/>
+                    <h:inputText id="movil" value="#{registro.con.telUsuario}" required="true" requiredMessage="Campo obligatorio" styleClass="form-control" />
+                    <h:message for="movil" styleClass="text-danger small" />
+                </div>
+
+                <!-- Correo y Confirmación -->
+                <div class="col-md-6 mb-3 text-start">
+                    <h:outputLabel for="correo" value="Correo Electrónico" styleClass="form-label"/>
+                    <h:inputText id="correo" value="#{registro.con.correoUsuario}" required="true" requiredMessage="Campo obligatorio" styleClass="form-control" />
+                    <h:message for="correo" styleClass="text-danger small" />
+                </div>
+                <div class="col-md-6 mb-3 text-start">
+                    <h:outputLabel for="correoConf" value="Confirmación de Correo" styleClass="form-label"/>
+                    <h:inputText id="correoConf" value="#{registro.con.correoConfirmado}" required="true" requiredMessage="Campo obligatorio" styleClass="form-control" />
+                    <h:message for="correoConf" styleClass="text-danger small" />
+                </div>
+
+                <!-- Tipo Usuario -->
+                <div class="col-md-6 mb-3 text-start">
+                    <h:outputLabel for="tipo" value="Tipo Usuario" styleClass="form-label"/>
+                    <h:selectOneMenu id="tipo" value="#{registro.con.tipoUsuario}" styleClass="form-select" required="true" requiredMessage="Seleccione un tipo de usuario">
+                        <f:selectItem itemLabel="Seleccione..." itemValue="" />
+                        <f:selectItem itemLabel="Médico" itemValue="Medico" />
+                        <f:selectItem itemLabel="Paciente" itemValue="Paciente" />
+                        <f:selectItem itemLabel="Administrador" itemValue="Administrador" />
+                    </h:selectOneMenu>
+                    <h:message for="tipo" styleClass="text-danger small" />
+                </div>
+
+                <!-- Contraseñas -->
+                <div class="mb-3">
+                    <h:outputLabel for="iTextPassword" value="Contraseña" styleClass="form-label" />
+                    <h:inputSecret id="iTextPassword" value="#{registro.con.passwordUsuario}" required="true"
+                                   requiredMessage="La contraseña es obligatoria" styleClass="form-control">
+                        <f:validateLength minimum="6" />
+                    </h:inputSecret>
+                    <h:message for="iTextPassword" styleClass="text-danger small" />
+                </div>
+
+                <div class="mb-3">
+                    <h:outputLabel for="CTextPassword" value="Confirma Contraseña" styleClass="form-label" />
+                    <h:inputSecret id="CTextPassword" value="#{registro.con.passwordConfirmado}" required="true"
+                                   requiredMessage="Debe confirmar la contraseña" styleClass="form-control">
+                        <f:validateLength minimum="6" />
+                    </h:inputSecret>
+                    <h:message for="CTextPassword" styleClass="text-danger small" />
+                </div>
+
+                <!-- Botones -->
+                <div class="col-12 text-center">
+                    <h:messages id="mensajes" globalOnly="true" styleClass="d-none" />
+                    <h:commandButton id="registrarBtn" value="Registrar Usuario"
+                                     action="#{registro.crearP2}"
+                                     onclick="return validarFormulario();"
+                                     styleClass="btn btn-primary px-4 me-2" />
+
+                    <h:button value="Regresar" outcome="login.xhtml" styleClass="btn btn-secondary px-4" />
+                </div>
+            </h:form>
+        </div>
+
+        <!-- SweetAlert para mensajes JS -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script type="text/javascript">
+            // <![CDATA[
+            window.addEventListener('load', function () {
+                var msgBox = document.getElementById('formSolicitud:mensajes');
+                if (msgBox && msgBox.innerText.trim() !== '') {
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Éxito!',
+                        text: msgBox.innerText.trim(),
+                        confirmButtonColor: '#3085d6'
+                    });
+                }
+            });
+
+            function validarFormulario() {
+                var iTextPassword = document.getElementById("formSolicitud:iTextPassword").value.trim();
+                var CTextPassword = document.getElementById("formSolicitud:CTextPassword").value.trim();
+                var correo = document.getElementById("formSolicitud:correo").value.trim();
+                var correoConf = document.getElementById("formSolicitud:correoConf").value.trim();
+
+                if (iTextPassword !== CTextPassword) {
+                    Swal.fire("Error", "La contraseña y su confirmación no coinciden.", "warning");
+                    return false;
+                }
+
+                if (correo !== correoConf) {
+                    Swal.fire("Error", "El correo electrónico y su confirmación no coinciden.", "warning");
+                    return false;
+                }
+
+                return true;
+            }
+            // ]]>
+        </script>
+    </ui:define>
+</ui:composition>

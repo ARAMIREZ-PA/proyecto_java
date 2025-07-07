@@ -44,7 +44,7 @@ public class Filtro implements Filter {
         boolean validarSesion = ((sesion != null) && (sesion.getAttribute("usuario") != null));
         //2. Validar que la ruta de donde proviene el long sea correcta
 
-        boolean validarRutaLogin = ((rutaSolicitud.equals(raiz + "/")) || (rutaSolicitud.equals(raiz + "/login.xhtml")));
+        boolean validarRutaLogin = ((rutaSolicitud.equals(raiz + "/")) || (rutaSolicitud.equals(raiz + "/login.xhtml")) || (rutaSolicitud.equals(raiz + "/TemplateRegistro.xhtml")));
 
         //3. Garantizar que efectivamente se este cargando el contenido estatico
         boolean validarContenido = rutaSolicitud.contains("/resources/");
@@ -58,7 +58,7 @@ public class Filtro implements Filter {
 
     @Override
     public void destroy() {
-  //      throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        //      throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
